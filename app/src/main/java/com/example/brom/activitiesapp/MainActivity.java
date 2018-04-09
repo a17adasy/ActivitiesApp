@@ -27,19 +27,25 @@ public class MainActivity extends AppCompatActivity {
 
         // 1. Create a ListView as in previous assignment
         final List<String> mNames = new ArrayList<String>(Arrays.asList(mountainNames));
-        final List<String> mLocations = new ArrayList<String>(Arrays.asList(mountainLocations));
-        final List<String> mHeights = new ArrayList<String>(Arrays.asList(mountainHeights));
 
         ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), R.layout.list_item_textview, R.id.my_item_textview, mNames);
 
-        ListView myListView = (ListView)findViewById(R.id.my_listview);
+        final ListView myListView = (ListView)findViewById(R.id.my_listview);
         myListView.setAdapter(adapter);
 
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int item, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
                 Intent intent = new Intent(getApplicationContext(), Mountaindetails2.class);
-                startActivity(intent);
+                Bundle info = new Bundle();
+                String name = mountainLocations[pos];
+                String loc = mountainLocations[pos];
+                String height = mountainHeights[pos];
+                info.putString("INFO_NAME", name);
+                info.putString("INFO_LOC", loc);
+                info.putString("INFO_HEIGHT", height);
+                intent.putExtras(info);
+                myListView.getContext().startActivity(intent);
             }
         });
         // 2. Create a new activity named "MountainDetailsActivity
