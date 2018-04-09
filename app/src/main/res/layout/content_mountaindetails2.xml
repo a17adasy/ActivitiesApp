@@ -4,11 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.brom.activitiesapp.MainActivity">
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/my_listview" />
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.brom.activitiesapp.Mountaindetails2"
+    tools:showIn="@layout/activity_mountaindetails2">
 
 </android.support.constraint.ConstraintLayout>
